@@ -12,7 +12,12 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://your-frontend-app.onrender.com'] // Update this with your frontend URL
+    : ['http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
@@ -25,7 +30,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'Task & Time Tracker API' });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
