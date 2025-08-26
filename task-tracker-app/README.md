@@ -93,7 +93,7 @@ task-tracker-app/
 
 3. Create a `.env` file with your configuration:
    ```env
-   PORT=5000
+   PORT=5001
    MONGO_URI=mongodb://localhost:27017/task-tracker
    JWT_SECRET=your_jwt_secret_key_here
    ```
@@ -120,7 +120,7 @@ task-tracker-app/
    npm start
    ```
 
-The frontend will run on `http://localhost:3000` and the backend on `http://localhost:5000`.
+The frontend will run on `http://localhost:3000` and the backend on `http://localhost:5001`.
 
 ## API Endpoints
 
