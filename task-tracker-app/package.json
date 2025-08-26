@@ -1,0 +1,27 @@
+{
+  "name": "task-tracker-app",
+  "version": "1.0.0",
+  "description": "Full-stack MERN Task & Time Tracker application",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "start": "cd backend && npm start",
+    "build": "cd frontend && npm run build",
+    "test-backend": "cd backend && node test.js"
+  },
+  "keywords": [
+    "mern",
+    "react",
+    "node",
+    "mongodb",
+    "express",
+    "task-tracker",
+    "time-tracking"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
