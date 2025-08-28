@@ -1,8 +1,8 @@
-# 🚀 Deployment Guide - Render
+#  Deployment Guide - Render
 
 This guide will walk you through deploying your Task & Time Tracker app on Render.
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - GitHub repository with your code
 - MongoDB Atlas account (for production database)
@@ -85,7 +85,7 @@ This guide will walk you through deploying your Task & Time Tracker app on Rende
    - Wait for build to complete
    - Note your frontend URL
 
-## 🔄 Step 4: Update CORS and URLs
+##  Step 4: Update CORS and URLs
 
 1. **Update Backend CORS**
    - In `backend/server.js`, update the CORS origin:
@@ -106,7 +106,7 @@ This guide will walk you through deploying your Task & Time Tracker app on Rende
    - Push changes to GitHub
    - Render will automatically redeploy
 
-## ✅ Step 5: Test Your Deployed App
+##  Step 5: Test Your Deployed App
 
 1. **Test Backend**
    - Visit your backend URL
@@ -119,7 +119,7 @@ This guide will walk you through deploying your Task & Time Tracker app on Rende
 3. **Test API Endpoints**
    - Use Postman or similar to test your API endpoints
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Common Issues:
 
@@ -140,24 +140,24 @@ This guide will walk you through deploying your Task & Time Tracker app on Rende
    - Double-check all environment variables are set
    - Ensure no typos in variable names
 
-## 🔒 Security Notes
+##  Security Notes
 
 - **JWT_SECRET**: Use a strong, random string
 - **MONGO_URI**: Never commit to Git
 - **CORS**: Only allow necessary origins
 - **Environment Variables**: Keep sensitive data in Render dashboard
 
-## 📱 Final URLs
+##  Final URLs
 
 After deployment, you'll have:
 - **Backend API**: `https://your-backend-app.onrender.com`
 - **Frontend App**: `https://your-frontend-app.onrender.com`
 
-## 🎉 Congratulations!
+## Congratulations!
 
 Your Task & Time Tracker app is now live on the internet! 🚀
 
-## 📚 Next Steps
+##  Next Steps
 
 - Set up custom domain (optional)
 - Configure monitoring and logging
