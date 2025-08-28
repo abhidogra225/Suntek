@@ -12,12 +12,18 @@ connectDB();
 const app = express();
 
 // Middleware
+// app.use(cors({
+//   origin: process.env.NODE_ENV === 'production' 
+//     ? ['https://suntek-task-manager.onrender.com'] // Your frontend domain
+//     : ['http://localhost:3000'],
+//   credentials: true
+// }));
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://suntek-task-manager.onrender.com'] // Your frontend domain
-    : ['http://localhost:3000'],
-  credentials: true
-}));
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+}))
 app.use(express.json());
 
 // Routes
