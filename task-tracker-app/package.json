@@ -7,7 +7,9 @@
     "start": "cd backend && npm start",
     "install": "cd backend && npm install",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
-    "install-all": "cd backend && npm install && cd ../frontend && npm install"
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd backend && npm install",
+    "postinstall": "cd backend && npm install"
   },
   "keywords": [
     "mern",
@@ -25,5 +27,9 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abhidogra225/Suntek.git"
   }
 }

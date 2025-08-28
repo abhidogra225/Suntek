@@ -8,24 +8,38 @@ dotenv.config();
 
 // Log environment variables for debugging
 console.log('Environment Variables:');
-console.log('NODE_ENV:', process.env.NODE_ENV);
-console.log('PORT:', process.env.PORT);
+console.log('NODE_ENV:', process.env.NODE_ENV || 'development');
+console.log('PORT:', process.env.PORT || 5001);
 console.log('MONGO_URI:', process.env.MONGO_URI ? 'SET' : 'NOT SET');
 console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'SET' : 'NOT SET');
 
 const app = express();
 
-// CORS Configuration - More explicit and robust
-app.use(cors({
-  origin: [
-    'https://suntek-task-manager.onrender.com',
-    'http://localhost:3000'
-  ],
+// CORS Configuration - More robust for production
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'https://suntek-task-manager.onrender.com',
+      'http://localhost:3000'
+    ];
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
   optionsSuccessStatus: 200
-}));
+};
+
+app.use(cors(corsOptions));
 
 // Alternative CORS for debugging (uncomment if needed)
 // app.use(cors({
@@ -42,8 +56,10 @@ app.get('/health', (req, res) => {
   res.json({ 
     status: 'OK', 
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV,
-    port: process.env.PORT
+    environment: process.env.NODE_ENV || 'development',
+    port: process.env.PORT || 5001,
+    cors: 'enabled',
+    origins: ['https://suntek-task-manager.onrender.com', 'http://localhost:3000']
   });
 });
 
@@ -63,7 +79,8 @@ app.get('/api/cors-test', (req, res) => {
     message: 'CORS is working!',
     timestamp: new Date().toISOString(),
     origin: req.headers.origin,
-    method: req.method
+    method: req.method,
+    cors: 'enabled'
   });
 });
 
@@ -101,8 +118,9 @@ const startServer = async () => {
         'https://suntek-task-manager.onrender.com',
         'http://localhost:3000'
       ]);
-      console.log(`🔧 NODE_ENV: ${process.env.NODE_ENV}`);
+      console.log(`🔧 NODE_ENV: ${process.env.NODE_ENV || 'development'}`);
       console.log(`📊 Health check: http://localhost:${PORT}/health`);
+      console.log(`🚀 Environment: ${process.env.NODE_ENV === 'production' ? 'PRODUCTION' : 'DEVELOPMENT'}`);
     });
   } catch (error) {
     console.error('❌ Failed to start server:', error);
