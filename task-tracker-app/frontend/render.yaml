@@ -7,4 +7,4 @@ services:
     staticPublishPath: frontend/build
     envVars:
       - key: REACT_APP_API_URL
-        value: https://YOUR_BACKEND_URL.onrender.com # Replace with your actual backend URL from Render
+        value: https://suntek.onrender.com/api # Update this with your actual backend URL
