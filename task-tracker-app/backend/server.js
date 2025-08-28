@@ -14,7 +14,7 @@ const app = express();
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-frontend-app.onrender.com'] // Update this with your frontend URL
+    ? ['https://suntek-task-manager.onrender.com'] // Your frontend domain
     : ['http://localhost:3000'],
   credentials: true
 }));

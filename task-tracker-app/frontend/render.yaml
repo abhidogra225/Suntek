@@ -7,4 +7,4 @@ services:
     staticPublishPath: frontend/build
     envVars:
       - key: REACT_APP_API_URL
-        value: https://your-backend-app.onrender.com # Update this with your backend URL
+        value: https://YOUR_BACKEND_URL.onrender.com # Replace with your actual backend URL from Render
